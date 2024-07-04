@@ -1,0 +1,280 @@
+:root {
+    --primary-color: #4338ca;
+    --secondary-color: #818cf8;
+    --background-gradient-start: #f0e6ff;
+    --background-gradient-end: #e6eeff;
+    --text-primary: #1f2937;
+    --text-secondary: #4b5563;
+    --border-color: #d1d5db;
+    --hover-bg-color: #e0e7ff;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .video-processor {
+    max-width: 64rem;
+    margin: 2.5rem auto;
+    padding: 2rem;
+    background: linear-gradient(to bottom right, var(--background-gradient-start), var(--background-gradient-end));
+    border-radius: 0.75rem;
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .video-processor__title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--primary-color);
+  }
+  
+  .video-uploader__dropzone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 16rem;
+    border: 2px dashed var(--border-color);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .video-uploader__dropzone:hover,
+  .video-uploader__dropzone.dragover {
+    border-color: var(--secondary-color);
+    background-color: var(--hover-bg-color);
+  }
+  
+  .video-uploader__input {
+    display: none;
+  }
+  
+  .video-uploader__icon {
+    width: 3rem;
+    height: 3rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+  }
+  
+  .video-uploader__text {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: var(--text-secondary);
+  }
+  
+  .video-uploader__text span {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  
+  .video-uploader__subtext {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+  
+  .video-uploader__file-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .processing-controls {
+    margin-top: 1.5rem;
+  }
+  
+  .processing-controls__buttons {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .processing-controls__start-button {
+    flex: 1;
+  }
+  
+  .processing-controls__icon {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.5rem;
+  }
+  
+  .processing-controls__icon--spin {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  .processing-controls__progress {
+    margin-top: 1rem;
+  }
+  
+  .processing-controls__progress-text {
+    text-align: center;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+  
+  .image-gallery {
+    margin-top: 2rem;
+  }
+  
+  .image-gallery__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+  
+  .image-gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+  
+  .image-gallery__item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease;
+  }
+  
+  .image-gallery__item:hover {
+    transform: translateY(-5px);
+  }
+  
+  .image-gallery__image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .image-gallery__overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .image-gallery__item:hover .image-gallery__overlay {
+    opacity: 1;
+  }
+  
+  .image-gallery__item:hover .image-gallery__image {
+    transform: scale(1.1);
+  }
+  
+  .AlertDialogOverlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    inset: 0;
+    animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .AlertDialogContent {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow-lg);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw;
+    max-width: 500px;
+    max-height: 85vh;
+    padding: 1.5rem;
+    animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .AlertDialogTitle {
+    margin: 0 0 0.5rem;
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .AlertDialogDescription {
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .Button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.25rem;
+    padding: 0 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    height: 2.5rem;
+    transition: all 0.2s ease;
+  }
+  
+  .Button.green {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  .Button.green:hover {
+    background-color: var(--secondary-color);
+  }
+  
+  .Button.green:focus {
+    box-shadow: 0 0 0 2px var(--secondary-color);
+  }
+  
+  @keyframes overlayShow {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes contentShow {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -48%) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .video-processor {
+      margin: 1rem;
+      padding: 1rem;
+    }
+  
+    .video-processor__title {
+      font-size: 1.5rem;
+    }
+  
+    .video-uploader__dropzone {
+      height: 12rem;
+    }
+  
+    .processing-controls__buttons {
+      flex-direction: column;
+    }
+  
+    .image-gallery__grid {
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+  }
